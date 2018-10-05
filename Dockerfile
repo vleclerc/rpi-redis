@@ -19,7 +19,7 @@ RUN apt-get update \
 
 ENV REDIS_VERSION 4.0.1
 ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-4.0.1.tar.gz
-ENV REDIS_DOWNLOAD_SHA1 2049cd6ae9167f258705081a6ef23bb80b7eff9ff3d0d7481e89510f27457591
+ENV REDIS_DOWNLOAD_SHA256 2049cd6ae9167f258705081a6ef23bb80b7eff9ff3d0d7481e89510f27457591
 
 # for redis-sentinel see: http://redis.io/topics/sentinel
 RUN buildDeps='gcc libc6-dev make'; \
@@ -28,7 +28,7 @@ RUN buildDeps='gcc libc6-dev make'; \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p /usr/src/redis \
 	&& curl -sSL "$REDIS_DOWNLOAD_URL" -o redis.tar.gz \
-	&& echo "$REDIS_DOWNLOAD_SHA1 *redis.tar.gz" | sha1sum -c - \
+	&& echo "$REDIS_DOWNLOAD_SHA256 *redis.tar.gz" | sha256sum -c - \
 	&& tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 \
 	&& rm redis.tar.gz \
 	&& make -C /usr/src/redis \
