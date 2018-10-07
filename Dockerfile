@@ -64,4 +64,4 @@ COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 6379
-CMD [ "redis-server", "--protected-mode no && --appendonly yes" ]
+CMD [ "redis-server", "--appendonly yes" ]
